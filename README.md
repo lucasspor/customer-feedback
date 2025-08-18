@@ -1,63 +1,53 @@
 # Review Carousel
 
-Um componente de carrossel de avaliações (testemunhos) simples e responsivo, que permite navegar entre diferentes revisores, exibindo suas fotos, nomes, cargos e comentários. O componente também suporta navegação aleatória e mantém a última avaliação visualizada usando o `localStorage`.
+A simple and responsive review carousel component that allows navigation between different reviewers, displaying their photos, names, positions, and comments. It also supports random navigation and persists the last viewed review using `localStorage`.
 
----
+## Features
 
-## Funcionalidades
+- Navigate reviews with "Next" and "Previous" buttons.
+- Display a random review with a dedicated button.
+- Persist the last viewed review using `localStorage`.
+- Dynamically load reviewer images from [randomuser.me](https://randomuser.me).
+- Support for both male and female profiles.
 
-- Navegação entre avaliações com botões "Próximo" e "Anterior".
-- Exibição de uma avaliação aleatória com um botão dedicado.
-- Armazenamento da última avaliação visualizada no `localStorage` para persistência de estado.
-- Carregamento dinâmico das imagens dos revisores a partir do serviço [randomuser.me](https://randomuser.me).
-- Suporte para perfis masculinos e femininos.
-
----
-
-## Tecnologias Utilizadas
+## Technologies
 
 - JavaScript (ES6+)
-- HTML5 e DOM API
+- HTML5 & DOM API
 - LocalStorage API
 
----
+## Project Structure
 
-## Estrutura de Pastas
+```
+/
+├── index.html           # Main page with basic markup
+├── css/
+│   └── styles.css       # Project styles
+├── js/
+│   └── carousel.js      # JavaScript logic for the carousel
+└── README.md            # Project documentation
+```
 
-    /
-    ├── index.html           # Página principal contendo o markup básico
-    ├── css/
-    │   └── styles.css       # Estilos do projeto
-    ├── js/
-    │   └── carousel.js      # Script JavaScript com a lógica do carrossel
-    └── README.md            # Documentação do projeto
+## Data Structure
 
----
+The `reviewers` array contains objects representing each reviewer with the following fields:
 
-## Estrutura dos Dados
+| Field     | Type    | Description                                                    |
+|-----------|---------|----------------------------------------------------------------|
+| `icon`    | Number  | Reviewer image ID from randomuser.me                           |
+| `name`    | String  | Full name of the reviewer                                      |
+| `sex`     | String  | Reviewer's sex (`"men"` or `"women"`) for correct image loading |
+| `position`| String  | Reviewer's professional title                                  |
+| `review`  | String  | Review/testimonial text                                        |
 
-O array `reviewers` contém objetos que representam cada avaliador com os seguintes campos:
+## Implementation Details
 
-| Campo     | Tipo    | Descrição                                                    |
-|-----------|---------|-------------------------------------------------------------|
-| `icon`    | Number  | ID da imagem do revisor no serviço randomuser.me            |
-| `name`    | String  | Nome completo do revisor                                     |
-| `sex`     | String  | Sexo do revisor (`"men"` ou `"women"`) para carregar imagem correta |
-| `position`| String  | Cargo profissional do revisor                                |
-| `review`  | String  | Texto da avaliação/testemunho                                |
+- The `changePages(page)` function updates the interface with the corresponding reviewer's data.
+- "Next" button advances to the next reviewer, looping back to the first after the last.
+- "Previous" button goes back to the previous reviewer, looping to the last after the first.
+- "Random" button selects a review randomly.
+- The current state is saved in `localStorage` to maintain the last viewed review.
 
----
+## License
 
-## Detalhes da Implementação
-
-- Função `changePages(page)` atualiza a interface com os dados do revisor correspondente.
-- O botão "Próximo" avança para o próximo avaliador, e ao chegar no último retorna ao primeiro.
-- O botão "Anterior" volta para o avaliador anterior, e ao chegar no primeiro volta para o último.
-- O botão "Aleatório" seleciona uma avaliação aleatoriamente.
-- O estado atual é salvo no `localStorage` para manter a última avaliação vista.
-
----
-
-## Licença
-
-Este projeto é open-source e pode ser utilizado livremente.
+This project is open-source and can be used freely
